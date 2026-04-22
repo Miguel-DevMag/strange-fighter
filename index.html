@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street Fighter (2026) | O Filme</title>
+    <!-- Fontes HUD e Modernas -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Efeitos cinematográficos -->
+    <div class="cursor-tatico"></div>
+    <div class="sobreposicao-ruido"></div>
+
+    <!-- 1. Cabecalho de navegação -->
+    <header class="cabecalho-principal">
+        <nav class="container-navegacao efeito-vidro">
+            <div class="logo-navegacao">
+                <img class="logo-street" src="image/Street-Fighter-Logo.png" alt="logo-street-fighter">
+            </div>
+            <ul class="links-navegacao">
+                <li><a href="#principal">INÍCIO</a></li>
+                <li><a href="#trailer">TRAILER</a></li>
+                <li><a href="#sinopse">SINOPSE</a></li>
+                <li><a href="#personagens">LUTADORES</a></li>
+                <li><a href="#galeria">MÍDIA</a></li>
+                <li><a href="#comunidade">COMUNIDADE</a></li>
+                <li><a href="#ingressos" class="cta-navegacao">INGRESSOS</a></li>
+            </ul>
+            <div class="status-navegacao">
+                <div class="ponto-pulso"></div>
+                <span>SISTEMA_PRONTO</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sobreposicao HUD -->
+    <div class="sobreposicao-hud">
+        <div class="canto-hud topo-esquerdo">
+            <span>SEC_ID: SF2026_PROT</span>
+            <div class="linha"></div>
+        </div>
+        <div class="canto-hud topo-direito">
+            <span>COORD: 35.6895° N, 139.6917° E</span>
+            <div class="linha"></div>
+        </div>
+        <div class="canto-hud baixo-esquerdo">
+            <span>STK_STATUS: ONLINE</span>
+            <div class="linha"></div>
+        </div>
+        <div class="canto-hud baixo-direito">
+            <span>BATTLE_LINK_v4.2</span>
+            <div class="linha"></div>
+        </div>
+    </div>
+
+    <!-- 2. Sessão principal -->
+    <header class="sessao-principal" id="principal">
+        <div class="container-video">
+            <video autoplay muted loop id="videoHero">
+                <source src="image/videostreet-fighter.mp4" type="video/mp4">
+            </video>
+            <div class="sobreposicao"></div>
+        </div>
+
+        <div class="conteudo-principal">
+            <h1 class="titulo-hud" data-text="STREET FIGHTER">STREET FIGHTER</h1>
+            <p class="subtitulo">O DESTINO DO MUNDO SERÁ DECIDIDO NAS RUAS.</p>
+            <div class="cta-principal">
+                <button class="botao-primario" onclick="document.getElementById('trailer').scrollIntoView({behavior: 'smooth'})">ASSISTIR TRAILER</button>
+                <div class="ano-principal">2026</div>
+            </div>
+        </div>
+
+        <div class="frame-mira"></div>
+    </header>
+
+    <!-- 2.1 Sessão Trailer -->
+    <section class="sessao-trailer secao-revelar" id="trailer">
+        <h2 class="titulo-secao">TRAILER OFICIAL</h2>
+        <div class="container-trailer efeito-vidro">
+            <video controls poster="image/gallery_1.png">
+                <source src="image/videostreet-fighter.mp4" type="video/mp4">
+            </video>
+            <div class="hud-video">
+                <div class="linha-escaneamento"></div>
+                <div class="ponto-gravacao"></div>
+                <span>LIVE FEED // CAMERA_DE_COMBATE_01</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2.2 Sessão Sinopse -->
+    <section class="sessao-sinopse secao-revelar" id="sinopse">
+        <div class="container-sinopse efeito-vidro">
+            <h2 class="titulo-secao texto-esquerdo">ARQUIVO DE MISSÃO: SINOPSE</h2>
+            <div class="conteudo-sinopse">
+                <p class="texto-maquina-escrever"
+                    data-text="Em um futuro onde o poder corporativo substituiu as nações, a Shadaloo emerge como uma ameaça global de controle mental. Ryu, um andarilho em busca do sentido da força, e Ken, um herdeiro lutando contra seu próprio legado, devem unir forças com uma coalizão internacional de elite. O torneio 'World Warrior' não é mais apenas um evento esportivo; é a linha de frente de uma guerra invisível que definirá a liberdade da humanidade.">
+                </p>
+                <p class="meta-sinopse">DIRETRIZ: NEUTRALIZAR M. BISON | LOCALIZAÇÃO: DESCONHECIDA | STATUS: CRÍTICO
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Sessão Personagens -->
+    <section class="sessao-personagens secao-revelar" id="personagens">
+        <h2 class="titulo-secao">SELECIONE SEU LUTADOR</h2>
+        <div class="container-cards-expansivos">
+
+            <!-- RYU -->
+            <div class="cartao ativa" style="--accent: #00A2FF;">
+                <img src="image/ryu_render.png" alt="Ryu">
+                <div class="info-cartao">
+                    <h3>RYU</h3>
+                    <p>O LUTADOR SOLITÁRIO</p>
+                    <div class="container-status">
+                        <div class="status"><label>FORÇA</label>
+                            <div class="barra">
+                                <div class="preenchimento" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="status"><label>VELOCIDADE</label>
+                            <div class="barra">
+                                <div class="preenchimento" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <div class="status"><label>HADOU-KI</label>
+                            <div class="barra">
+                                <div class="preenchimento" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="texto-brilhante">STATUS DE BATALHA: PRONTO</span>
+                </div>
+            </div>
+            <!-- KEN -->
+            <div class="cartao" style="--accent: #FF0000;">
+                <img src="image/ken_render.png" alt="Ken">
+                <div class="info-cartao">
+                    <h3>KEN</h3>
+                    <p>O PUNHO DE FOGO</p>
+                    <div class="container-status">
+                        <div class="status"><label>FORÇA</label>
+                            <div class="barra">
+                                <div class="preenchimento" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div class="status"><label>VELOCIDADE</label>
+                            <div class="barra">
+                                <div class="preenchimento" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div class="status"><label>SHORYU-KEN</label>
+                            <div class="barra">
+                                <div class="preenchimento" style="width: 88%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="texto-brilhante">STATUS DE BATALHA: PRONTO</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Galeria -->
+    <section class="sessao-galeria secao-revelar" id="galeria">
+        <h2 class="titulo-secao">INSIGHTS DE COMBATE</h2>
+        <div class="grade-bento">
+            <div class="item-bento efeito-vidro grande">
+                <img src="image/gallery_1.png" alt="Combat 1">
+                <div class="sobreposicao-item"><span>CENÁRIO: NEO-TOKYO</span></div>
+            </div>
+            <div class="item-bento efeito-vidro pequeno">
+                <img src="image/gallery_2.png" alt="Combat 2">
+                <div class="sobreposicao-item"><span>DETALHE: EQUIPAMENTO_v1</span></div>
+            </div>
+            <div class="item-bento efeito-vidro pequeno">
+                <img src="image/gallery_3.png" alt="Combat 3">
+                <div class="sobreposicao-item"><span>SISTEMA: MAPA_GLOBAL</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Contador Regressivo -->
+    <section class="sessao-contagem secao-revelar">
+        <div class="container-contagem efeito-vidro">
+            <h2 class="titulo-arcade">LANÇAMENTO MUNDIAL</h2>
+            <div id="contagem" class="digitos-arcade">
+                <div class="caixa-digito">
+                    <span id="dias">00</span>
+                    <label>DIAS</label>
+                </div>
+                <div class="caixa-digito">
+                    <span id="horas">00</span>
+                    <label>HORAS</label>
+                </div>
+                <div class="caixa-digito">
+                    <span id="minutos">00</span>
+                    <label>MINUTOS</label>
+                </div>
+                <div class="caixa-digito">
+                    <span id="segundos">00</span>
+                    <label>SEGUNDOS</label>
+                </div>
+            </div>
+            <p class="inserir-moeda">INSERIR MOEDA PARA COMEÇAR</p>
+        </div>
+    </section>
+
+    <!-- 6. Ingressos -->
+    <section class="sessao-ingressos secao-revelar" id="ingressos">
+        <div class="container-cta-ingressos">
+            <h2 class="titulo-secao">GARANTA SEU LUGAR NA ARENA</h2>
+            <p class="cta-descricao">Acesse a plataforma oficial para adquirir seu ingresso de forma segura.</p>
+            <button class="botao-primario botao-comprar-agora"
+                onclick="window.open('https://www.ingresso.com/filme/street-fighter')">
+                COMPRAR INGRESSO OFICIAL
+            </button>
+            <div class="etiqueta-segura">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/shield.png"
+                    style="width: 15px; vertical-align: middle; margin-right: 5px;" alt="Seguro">
+                PLATAFORMA CRIPTOGRAFADA E SEGURA
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Seção de Comentários -->
+    <section class="sessao-comentarios secao-revelar" id="comunidade">
+        <h2 class="titulo-secao">COMUNICAÇÕES DE CAMPO</h2>
+        <div class="container-comentarios efeito-vidro">
+            <div class="lista-comentarios">
+                <div class="comentario">
+                    <div class="cabecalho-comentario">
+                        <span class="usuario">GUYLE_FAN_99</span>
+                        <span class="tempo">HÁ 2 MINUTOS</span>
+                    </div>
+                    <p class="texto-comentario">O visual desse filme está surreal! Finalmente uma adaptação que parece respeitar o material original. Hadouken!</p>
+                </div>
+                <div class="comentario">
+                    <div class="cabecalho-comentario">
+                        <span class="usuario">CHUN_LI_CORE</span>
+                        <span class="tempo">HÁ 15 MINUTOS</span>
+                    </div>
+                    <p class="texto-comentario">Espero que a trilha sonora seja tão épica quanto esses renders. 2026 não chega nunca!</p>
+                </div>
+                <div class="comentario-input">
+                    <input type="text" placeholder="ENVIAR TRANSMISSÃO..." class="campo-comentario">
+                    <button class="botao-enviar">ENVIAR</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="rodape secao-revelar">
+        <div class="linha-rodape"></div>
+        <div class="creditos">
+            <p>DIRETOR: KITAO SAKURAI | PRODUÇÃO: CAPCOM FILMS | ELENCO: [ANDREW KOJI, NOAH CENTINEO, JASON MOMOA]</p>
+            <p>TECNOLOGIA DE HUD: SF_INTERFACE_CORE_v5.0</p>
+        </div>
+        <p class="direitos">&copy; 2026 CAPCOM & SF FILMS. TODOS OS DIREITOS RESERVADOS.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
