@@ -19,7 +19,7 @@
 html {
     scroll-behavior: smooth;
 }
-
+ 
 body {
     background-color: var(--bg);
     color: var(--texto);
@@ -744,84 +744,66 @@ video {
     opacity: 0.5;
 }
 
-/* --- SESSAO COMENTARIOS --- */
-.sessao-comentarios {
-    padding: 100px 5%;
-    background: linear-gradient(to bottom, transparent, rgba(255, 0, 0, 0.05));
+/* marquee de depoimentos */
+.sessao-depoimentos { padding: 80px 0; }
+
+.container-marquee {
+    position: relative;
+    overflow: hidden;
+    padding: 60px 0;
+    background: linear-gradient(180deg, transparent, rgba(255,0,0,0.02), transparent);
 }
 
-.container-comentarios {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px;
-    border: 1px solid var(--borda);
+.mascara-marquee {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(90deg, var(--bg) 0%, transparent 20%, transparent 80%, var(--bg) 100%);
+    pointer-events: none;
+}
+
+.faixa-marquee { display: flex; margin-bottom: 30px; }
+.grupo-marquee { display: flex; gap: 30px; padding-right: 30px; }
+
+.esquerda .grupo-marquee { animation: scroll-esquerda 60s linear infinite; }
+.direita .grupo-marquee { animation: scroll-direita 55s linear infinite; }
+
+.faixa-marquee:hover .grupo-marquee { animation-play-state: paused; }
+
+@keyframes scroll-esquerda { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes scroll-direita { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+
+.card-depoimento {
+    min-width: 350px;
+    padding: 30px;
     border-radius: 20px;
-}
-
-.lista-comentarios {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-.comentario {
-    border-left: 2px solid var(--ryu);
-    padding-left: 20px;
-    transition: 0.3s;
-}
-
-.comentario:hover { border-left-color: var(--ken); }
-
-.cabecalho-comentario {
-    display: flex;
-    justify-content: space-between;
-    font-family: var(--orbitron);
-    font-size: 0.6rem;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-    opacity: 0.7;
-}
-
-.usuario { color: var(--ryu); }
-
-.texto-comentario {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    opacity: 0.9;
-}
-
-.comentario-input {
-    margin-top: 30px;
-    display: flex;
-    gap: 15px;
-}
-
-.campo-comentario {
-    flex: 1;
-    background: rgba(255,255,255,0.05);
     border: 1px solid var(--borda);
-    color: var(--texto);
-    padding: 15px;
-    font-family: var(--orbitron);
-    font-size: 0.7rem;
-    border-radius: 5px;
-    outline: none;
-}
-
-.botao-enviar {
-    background: var(--ryu);
-    color: var(--bg);
-    border: none;
-    padding: 0 30px;
-    font-family: var(--orbitron);
-    font-weight: 700;
-    font-size: 0.7rem;
-    cursor: pointer;
-    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
     transition: 0.3s;
 }
 
-.botao-enviar:hover { background: var(--ken); color: var(--texto); }
+.card-depoimento:hover { border-color: var(--ryu); background: rgba(255, 255, 255, 0.05); transform: translateY(-5px); }
+
+.cabecalho-card { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+
+.avatar-letra {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--orbitron);
+    font-weight: 900;
+    font-size: 1.2rem;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.info-user .nome { font-family: var(--orbitron); font-size: 0.8rem; color: var(--ryu); display: block; margin-bottom: 2px; }
+.info-user .badge { font-size: 0.6rem; opacity: 0.4; text-transform: uppercase; letter-spacing: 2px; border: 1px solid var(--borda); padding: 2px 8px; border-radius: 10px; }
+
+.texto-card { font-size: 0.9rem; line-height: 1.6; opacity: 0.7; font-style: italic; }
 
 /* --- RODAPE --- */
 .rodape {

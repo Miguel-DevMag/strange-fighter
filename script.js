@@ -1,4 +1,4 @@
-
+ 
 document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Lógica do cursor HUD tático
@@ -61,6 +61,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.15 });
 
     secoesParaRevelar.forEach(secao => observadorRevelacao.observe(secao));
+
+       // gerador de depoimentos para o carrossel infinito
+       const depoimentos = [
+        { n: 'ryu_fan_99', b: 'mestre', t: 'hadouken no cinema finalmente! visual impecável.', c: '#00a2ff' },
+        { n: 'ken_master', b: 'veterano', t: 'o shoryuken de fogo parece surreal. ansioso!', c: '#ff4500' },
+        { n: 'chun_interpol', b: 'lenda', t: 'a melhor representação da chun-li que já vi.', c: '#ffd700' },
+        { n: 'guile_sonic', b: 'elite', t: 'sonic boom em imax vai ser uma loucura total.', c: '#00ff88' },
+        { n: 'cammy_delta', b: 'agente', t: 'as cenas de ação estão em outro nível de coreografia.', c: '#00e5ff' },
+        { n: 'bison_lord', b: 'vilão', t: 'shadaloo vai dominar as bilheterias em 2026.', c: '#9b59b6' },
+        { n: 'arcade_og', b: 'campeão', t: 'joguei muito o sf2 nos fliperamas, isso é um sonho.', c: '#ff0000' },
+        { n: 'world_warrior', b: 'fã', t: 'finalmente uma adaptação que respeita o material original.', c: '#00a2ff' }
+    ];
+
+    function criarCard(dep) {
+        return `
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:${dep.c}22; color:${dep.c}">${dep.n[0].toUpperCase()}</div>
+                    <div class="info-user">
+                        <span class="nome">${dep.n}</span>
+                        <span class="badge">${dep.b}</span>
+                    </div>
+                </div>
+                <p class="texto-card">"${dep.t}"</p>
+            </div>
+        `;
+    }
+
+    const m1 = document.getElementById('marquee-grupo-1');
+    const m2 = document.getElementById('marquee-grupo-2');
+    
+    if (m1 && m2) {
+        const htmlCards = depoimentos.map(d => criarCard(d)).join('');
+        const htmlCardsDuplicados = htmlCards + htmlCards; // para loop seamless
+        m1.innerHTML = htmlCardsDuplicados;
+        m2.innerHTML = htmlCardsDuplicados;
+    }
 
     // 5. Lógica de cartões expansíveis e reset de status
     const cartoes = document.querySelectorAll('.cartao');

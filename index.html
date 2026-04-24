@@ -38,7 +38,7 @@
             </div>
         </nav>
     </header>
-
+ 
     <!-- Sobreposicao HUD -->
     <div class="sobreposicao-hud">
         <div class="canto-hud topo-esquerdo">
@@ -113,62 +113,86 @@
     <section class="sessao-personagens secao-revelar" id="personagens">
         <h2 class="titulo-secao">SELECIONE SEU LUTADOR</h2>
         <div class="container-cards-expansivos">
-
-            <!-- RYU -->
-            <div class="cartao ativa" style="--accent: #00A2FF;">
-                <img src="image/ryu_render.png" alt="Ryu">
+            <!-- ryu -->
+            <div class="cartao ativa" style="--accent: #00A2FF;" data-lutador="0">
+                <img src="image/ryu_render.png" alt="ryu">
                 <div class="info-cartao">
                     <h3>RYU</h3>
-                    <p>O LUTADOR SOLITÁRIO</p>
+                    <p>o andarilho solitário</p>
                     <div class="container-status">
-                        <div class="status"><label>FORÇA</label>
-                            <div class="barra">
-                                <div class="preenchimento" style="width: 85%;"></div>
-                            </div>
-                        </div>
-                        <div class="status"><label>VELOCIDADE</label>
-                            <div class="barra">
-                                <div class="preenchimento" style="width: 75%;"></div>
-                            </div>
-                        </div>
-                        <div class="status"><label>HADOU-KI</label>
-                            <div class="barra">
-                                <div class="preenchimento" style="width: 95%;"></div>
-                            </div>
-                        </div>
+                        <div class="status"><label>hadou-ki</label><div class="barra"><div class="preenchimento" style="width: 95%;"></div></div></div>
+                        <div class="status"><label>técnica</label><div class="barra"><div class="preenchimento" style="width: 90%;"></div></div></div>
                     </div>
-                    <span class="texto-brilhante">STATUS DE BATALHA: PRONTO</span>
+                    <span class="texto-brilhante">status: pronto para o combate</span>
                 </div>
             </div>
-            <!-- KEN -->
-            <div class="cartao" style="--accent: #FF0000;">
-                <img src="image/ken_render.png" alt="Ken">
+            <!-- ken -->
+            <div class="cartao" style="--accent: #FF4500;" data-lutador="1">
+                <img src="image/ken_render.png" alt="ken">
                 <div class="info-cartao">
                     <h3>KEN</h3>
-                    <p>O PUNHO DE FOGO</p>
+                    <p>o mestre do punho de fogo</p>
                     <div class="container-status">
-                        <div class="status"><label>FORÇA</label>
-                            <div class="barra">
-                                <div class="preenchimento" style="width: 80%;"></div>
-                            </div>
-                        </div>
-                        <div class="status"><label>VELOCIDADE</label>
-                            <div class="barra">
-                                <div class="preenchimento" style="width: 90%;"></div>
-                            </div>
-                        </div>
-                        <div class="status"><label>SHORYU-KEN</label>
-                            <div class="barra">
-                                <div class="preenchimento" style="width: 88%;"></div>
-                            </div>
-                        </div>
+                        <div class="status"><label>velocidade</label><div class="barra"><div class="preenchimento" style="width: 88%;"></div></div></div>
+                        <div class="status"><label>shoryu-ken</label><div class="barra"><div class="preenchimento" style="width: 92%;"></div></div></div>
                     </div>
-                    <span class="texto-brilhante">STATUS DE BATALHA: PRONTO</span>
+                    <span class="texto-brilhante">status: pronto para o combate</span>
+                </div>
+            </div>
+            <!-- chun-li -->
+            <div class="cartao" style="--accent: #FFD700;" data-lutador="2">
+                <img src="image/chunli_render.png" alt="chun-li">
+                <div class="info-cartao">
+                    <h3>CHUN-LI</h3>
+                    <p>a detetive da interpol</p>
+                    <div class="container-status">
+                        <div class="status"><label>agilidade</label><div class="barra"><div class="preenchimento" style="width: 98%;"></div></div></div>
+                        <div class="status"><label>técnica</label><div class="barra"><div class="preenchimento" style="width: 94%;"></div></div></div>
+                    </div>
+                    <span class="texto-brilhante">status: pronta para o combate</span>
+                </div>
+            </div>
+            <!-- guile -->
+            <div class="cartao" style="--accent: #00FF88;" data-lutador="3">
+                <img src="image/guile_render.png" alt="guile">
+                <div class="info-cartao">
+                    <h3>GUILE</h3>
+                    <p>o herói da força aérea</p>
+                    <div class="container-status">
+                        <div class="status"><label>defesa</label><div class="barra"><div class="preenchimento" style="width: 90%;"></div></div></div>
+                        <div class="status"><label>sonic boom</label><div class="barra"><div class="preenchimento" style="width: 85%;"></div></div></div>
+                    </div>
+                    <span class="texto-brilhante">status: pronto para o combate</span>
+                </div>
+            </div>
+            <!-- cammy -->
+            <div class="cartao" style="--accent: #00E5FF;" data-lutador="4">
+                <img src="image/cammy_render.png" alt="cammy">
+                <div class="info-cartao">
+                    <h3>CAMMY</h3>
+                    <p>a operativa da delta red</p>
+                    <div class="container-status">
+                        <div class="status"><label>velocidade</label><div class="barra"><div class="preenchimento" style="width: 96%;"></div></div></div>
+                        <div class="status"><label>precisão</label><div class="barra"><div class="preenchimento" style="width: 88%;"></div></div></div>
+                    </div>
+                    <span class="texto-brilhante">status: pronta para o combate</span>
+                </div>
+            </div>
+            <!-- m. bison -->
+            <div class="cartao" style="--accent: #9B59B6;" data-lutador="5">
+                <img src="image/bison_render.png" alt="m. bison">
+                <div class="info-cartao">
+                    <h3>M. BISON</h3>
+                    <p>o mestre do psycho power</p>
+                    <div class="container-status">
+                        <div class="status"><label>poder</label><div class="barra"><div class="preenchimento" style="width: 99%;"></div></div></div>
+                        <div class="status"><label>dominação</label><div class="barra"><div class="preenchimento" style="width: 95%;"></div></div></div>
+                    </div>
+                    <span class="texto-brilhante">status: pronto para o combate</span>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- 4. Galeria -->
     <section class="sessao-galeria secao-revelar" id="galeria">
         <h2 class="titulo-secao">INSIGHTS DE COMBATE</h2>
@@ -232,27 +256,26 @@
     </section>
 
     <!-- 7. Seção de Comentários -->
-    <section class="sessao-comentarios secao-revelar" id="comunidade">
-        <h2 class="titulo-secao">COMUNICAÇÕES DE CAMPO</h2>
-        <div class="container-comentarios efeito-vidro">
-            <div class="lista-comentarios">
-                <div class="comentario">
-                    <div class="cabecalho-comentario">
-                        <span class="usuario">GUYLE_FAN_99</span>
-                        <span class="tempo">HÁ 2 MINUTOS</span>
-                    </div>
-                    <p class="texto-comentario">O visual desse filme está surreal! Finalmente uma adaptação que parece respeitar o material original. Hadouken!</p>
+    <!-- seção depoimentos marquee infinito -->
+    <section class="sessao-depoimentos secao-revelar" id="depoimentos">
+        <div class="cabecalho-secao">
+            <div class="linha-decorativa"></div>
+            <h2 class="titulo-secao">arena da comunidade</h2>
+            <div class="linha-decorativa"></div>
+        </div>
+        
+        <div class="container-marquee">
+            <div class="mascara-marquee"></div>
+            <!-- faixa superior: direita para esquerda -->
+            <div class="faixa-marquee esquerda">
+                <div class="grupo-marquee" id="marquee-grupo-1">
+                    <!-- gerado pelo js -->
                 </div>
-                <div class="comentario">
-                    <div class="cabecalho-comentario">
-                        <span class="usuario">CHUN_LI_CORE</span>
-                        <span class="tempo">HÁ 15 MINUTOS</span>
-                    </div>
-                    <p class="texto-comentario">Espero que a trilha sonora seja tão épica quanto esses renders. 2026 não chega nunca!</p>
-                </div>
-                <div class="comentario-input">
-                    <input type="text" placeholder="ENVIAR TRANSMISSÃO..." class="campo-comentario">
-                    <button class="botao-enviar">ENVIAR</button>
+            </div>
+            <!-- faixa inferior: esquerda para direita -->
+            <div class="faixa-marquee direita">
+                <div class="grupo-marquee" id="marquee-grupo-2">
+                    <!-- gerado pelo js -->
                 </div>
             </div>
         </div>
