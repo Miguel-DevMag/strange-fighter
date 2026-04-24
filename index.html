@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Street Fighter (2026) | O Filme</title>
-    <!-- Fontes HUD e Modernas -->
+    <meta name="description"
+        content="Street Fighter (2026) - o filme oficial. assista ao trailer, conheça os lutadores e garanta seu ingresso.">
+    <title>Street Fighter (2026) | o filme oficial</title>
+    <!-- fontes e estilos -->
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;700&display=swap"
         rel="stylesheet">
@@ -13,259 +15,330 @@
 </head>
 
 <body>
-    <!-- Efeitos cinematográficos -->
+    <!-- efeitos de tela -->
     <div class="cursor-tatico"></div>
     <div class="sobreposicao-ruido"></div>
+    <div id="particulas-container"></div>
 
-    <!-- 1. Cabecalho de navegação -->
+    <!-- cabecalho de navegação -->
     <header class="cabecalho-principal">
         <nav class="container-navegacao efeito-vidro">
             <div class="logo-navegacao">
-                <img class="logo-street" src="image/Street-Fighter-Logo.png" alt="logo-street-fighter">
+                <img class="logo-street" src="image/Street-Fighter-Logo.png" alt="logo street fighter">
             </div>
-            <ul class="links-navegacao">
-                <li><a href="#principal">INÍCIO</a></li>
-                <li><a href="#trailer">TRAILER</a></li>
-                <li><a href="#sinopse">SINOPSE</a></li>
-                <li><a href="#personagens">LUTADORES</a></li>
-                <li><a href="#galeria">MÍDIA</a></li>
-                <li><a href="#comunidade">COMUNIDADE</a></li>
-                <li><a href="#ingressos" class="cta-navegacao">INGRESSOS</a></li>
+            <ul class="links-navegacao" id="menu-links">
+                <li><a href="#principal">início</a></li>
+                <li><a href="#trailer">trailer</a></li>
+                <li><a href="#sinopse">sinopse</a></li>
+                <li><a href="#personagens">lutadores</a></li>
+                <li><a href="#galeria">mídia</a></li>
+                <li><a href="#depoimentos">comunidade</a></li>
+                <li><a href="#ingressos" class="cta-navegacao">ingressos</a></li>
             </ul>
             <div class="status-navegacao">
                 <div class="ponto-pulso"></div>
-                <span>SISTEMA_PRONTO</span>
+                <span>sistema_online</span>
             </div>
+            <button class="botao-hamburguer" id="botao-hamburguer" aria-label="abrir menu">
+                <span></span><span></span><span></span>
+            </button>
         </nav>
     </header>
 
-    <!-- Sobreposicao HUD -->
+    <!-- sobreposicao hud -->
     <div class="sobreposicao-hud">
         <div class="canto-hud topo-esquerdo">
-            <span>SEC_ID: SF2026_PROT</span>
+            <span>sec_id: sf2026_prot</span>
             <div class="linha"></div>
         </div>
         <div class="canto-hud topo-direito">
-            <span>COORD: 35.6895° N, 139.6917° E</span>
+            <span>coord: 35.6895° n, 139.6917° e</span>
             <div class="linha"></div>
         </div>
         <div class="canto-hud baixo-esquerdo">
-            <span>STK_STATUS: ONLINE</span>
+            <span>stk_status: online</span>
             <div class="linha"></div>
         </div>
         <div class="canto-hud baixo-direito">
-            <span>BATTLE_LINK_v4.2</span>
+            <span>battle_link_v4.2</span>
             <div class="linha"></div>
         </div>
     </div>
 
-    <!-- 2. Sessão principal -->
+    <!-- seção principal hero -->
     <header class="sessao-principal" id="principal">
         <div class="container-video">
-            <video autoplay muted loop id="videoHero">
+            <video autoplay muted loop id="videoHero" playsinline>
                 <source src="image/videostreet-fighter.mp4" type="video/mp4">
             </video>
             <div class="sobreposicao"></div>
         </div>
-
         <div class="conteudo-principal">
             <h1 class="titulo-hud" data-text="STREET FIGHTER">STREET FIGHTER</h1>
-            <p class="subtitulo">O DESTINO DO MUNDO SERÁ DECIDIDO NAS RUAS.</p>
+            <p class="subtitulo">o destino do mundo será decidido nas ruas.</p>
             <div class="cta-principal">
-                <button class="botao-primario" onclick="document.getElementById('trailer').scrollIntoView({behavior: 'smooth'})">ASSISTIR TRAILER</button>
-                <div class="ano-principal">2026</div>
+                <button class="botao-primario botao-energia"
+                    onclick="document.getElementById('trailer').scrollIntoView({behavior: 'smooth'})">
+                    <span class="energia-icone">▶</span> assistir trailer
+                </button>
+                <button class="botao-secundario"
+                    onclick="document.getElementById('personagens').scrollIntoView({behavior: 'smooth'})">
+                    selecionar lutador
+                </button>
             </div>
+            <div class="ano-principal">2026</div>
         </div>
-
-        <div class="frame-mira"></div>
     </header>
 
-    <!-- 2.1 Sessão Trailer -->
+    <!-- seção trailer -->
     <section class="sessao-trailer secao-revelar" id="trailer">
-        <h2 class="titulo-secao">TRAILER OFICIAL</h2>
+        <div class="cabecalho-secao">
+            <div class="linha-decorativa"></div>
+            <h2 class="titulo-secao">trailer oficial</h2>
+            <div class="linha-decorativa"></div>
+        </div>
         <div class="container-trailer efeito-vidro">
-            <video controls poster="image/gallery_1.png">
+            <video controls poster="image/gallery_1.png" id="video-trailer">
                 <source src="image/videostreet-fighter.mp4" type="video/mp4">
             </video>
             <div class="hud-video">
                 <div class="linha-escaneamento"></div>
                 <div class="ponto-gravacao"></div>
-                <span>LIVE FEED // CAMERA_DE_COMBATE_01</span>
+                <span>live feed // camera_de_combate_01</span>
+            </div>
+        </div>
+        <div class="estatisticas-trailer">
+            <div class="stat-item">
+                <span class="stat-numero" data-alvo="47">0</span><span>m</span>
+                <label>visualizações</label>
+            </div>
+            <div class="stat-item">
+                <span class="stat-numero" data-alvo="98">0</span><span>%</span>
+                <label>aprovação</label>
+            </div>
+            <div class="stat-item">
+                <span class="stat-numero" data-alvo="6">0</span>
+                <label>lutadores</label>
             </div>
         </div>
     </section>
 
-    <!-- 2.2 Sessão Sinopse -->
+    <!-- seção sinopse -->
     <section class="sessao-sinopse secao-revelar" id="sinopse">
         <div class="container-sinopse efeito-vidro">
-            <h2 class="titulo-secao texto-esquerdo">ARQUIVO DE MISSÃO: SINOPSE</h2>
+            <h2 class="titulo-secao texto-esquerdo">arquivo de missão: sinopse</h2>
             <div class="conteudo-sinopse">
                 <p class="texto-maquina-escrever"
-                    data-text="Em um futuro onde o poder corporativo substituiu as nações, a Shadaloo emerge como uma ameaça global de controle mental. Ryu, um andarilho em busca do sentido da força, e Ken, um herdeiro lutando contra seu próprio legado, devem unir forças com uma coalizão internacional de elite. O torneio 'World Warrior' não é mais apenas um evento esportivo; é a linha de frente de uma guerra invisível que definirá a liberdade da humanidade.">
+                    data-text="em um futuro onde o poder corporativo substituiu as nações, a shadaloo emerge como uma ameaça global de controle mental. ryu e ken devem unir forças com uma coalizão internacional de elite. o torneio world warrior não é mais apenas um evento esportivo; é a linha de frente de uma guerra invisível que definirá a liberdade da humanidade.">
                 </p>
-                <p class="meta-sinopse">DIRETRIZ: NEUTRALIZAR M. BISON | LOCALIZAÇÃO: DESCONHECIDA | STATUS: CRÍTICO
-                </p>
+                <p class="meta-sinopse">diretriz: neutralizar m. bison | localização: desconhecida | status: crítico</p>
             </div>
         </div>
     </section>
 
-    <!-- 3. Sessão Personagens -->
+    <!-- seção lutadores cards expansíveis -->
     <section class="sessao-personagens secao-revelar" id="personagens">
-        <h2 class="titulo-secao">SELECIONE SEU LUTADOR</h2>
-        <div class="container-cards-expansivos">
+        <div class="cabecalho-secao">
+            <div class="linha-decorativa"></div>
+            <h2 class="titulo-secao">selecione seu lutador</h2>
+            <div class="linha-decorativa"></div>
+        </div>
+        <p class="subtitulo-secao">escolha um guerreiro e conheça sua história</p>
 
-            <!-- RYU -->
-            <div class="cartao ativa" style="--accent: #00A2FF;">
-                <img src="image/ryu_render.png" alt="Ryu">
+        <div class="container-cards-expansivos">
+            <!-- ryu -->
+            <div class="cartao ativa" style="--accent: #00A2FF;" data-lutador="0">
+                <img src="image/ryu_render.png" alt="ryu">
                 <div class="info-cartao">
                     <h3>RYU</h3>
-                    <p>O LUTADOR SOLITÁRIO</p>
+                    <p>o andarilho solitário</p>
                     <div class="container-status">
-                        <div class="status"><label>FORÇA</label>
-                            <div class="barra">
-                                <div class="preenchimento" style="width: 85%;"></div>
-                            </div>
-                        </div>
-                        <div class="status"><label>VELOCIDADE</label>
-                            <div class="barra">
-                                <div class="preenchimento" style="width: 75%;"></div>
-                            </div>
-                        </div>
-                        <div class="status"><label>HADOU-KI</label>
-                            <div class="barra">
-                                <div class="preenchimento" style="width: 95%;"></div>
-                            </div>
-                        </div>
+                        <div class="status"><label>hadou-ki</label><div class="barra"><div class="preenchimento" style="width: 95%;"></div></div></div>
+                        <div class="status"><label>técnica</label><div class="barra"><div class="preenchimento" style="width: 90%;"></div></div></div>
                     </div>
-                    <span class="texto-brilhante">STATUS DE BATALHA: PRONTO</span>
+                    <span class="texto-brilhante">status: pronto para o combate</span>
                 </div>
             </div>
-            <!-- KEN -->
-            <div class="cartao" style="--accent: #FF0000;">
-                <img src="image/ken_render.png" alt="Ken">
+            <!-- ken -->
+            <div class="cartao" style="--accent: #FF4500;" data-lutador="1">
+                <img src="image/ken_render.png" alt="ken">
                 <div class="info-cartao">
                     <h3>KEN</h3>
-                    <p>O PUNHO DE FOGO</p>
+                    <p>o mestre do punho de fogo</p>
                     <div class="container-status">
-                        <div class="status"><label>FORÇA</label>
-                            <div class="barra">
-                                <div class="preenchimento" style="width: 80%;"></div>
-                            </div>
-                        </div>
-                        <div class="status"><label>VELOCIDADE</label>
-                            <div class="barra">
-                                <div class="preenchimento" style="width: 90%;"></div>
-                            </div>
-                        </div>
-                        <div class="status"><label>SHORYU-KEN</label>
-                            <div class="barra">
-                                <div class="preenchimento" style="width: 88%;"></div>
-                            </div>
-                        </div>
+                        <div class="status"><label>velocidade</label><div class="barra"><div class="preenchimento" style="width: 88%;"></div></div></div>
+                        <div class="status"><label>shoryu-ken</label><div class="barra"><div class="preenchimento" style="width: 92%;"></div></div></div>
                     </div>
-                    <span class="texto-brilhante">STATUS DE BATALHA: PRONTO</span>
+                    <span class="texto-brilhante">status: pronto para o combate</span>
+                </div>
+            </div>
+            <!-- chun-li -->
+            <div class="cartao" style="--accent: #FFD700;" data-lutador="2">
+                <img src="image/chunli_render.png" alt="chun-li">
+                <div class="info-cartao">
+                    <h3>CHUN-LI</h3>
+                    <p>a detetive da interpol</p>
+                    <div class="container-status">
+                        <div class="status"><label>agilidade</label><div class="barra"><div class="preenchimento" style="width: 98%;"></div></div></div>
+                        <div class="status"><label>técnica</label><div class="barra"><div class="preenchimento" style="width: 94%;"></div></div></div>
+                    </div>
+                    <span class="texto-brilhante">status: pronta para o combate</span>
+                </div>
+            </div>
+            <!-- guile -->
+            <div class="cartao" style="--accent: #00FF88;" data-lutador="3">
+                <img src="image/guile_render.png" alt="guile">
+                <div class="info-cartao">
+                    <h3>GUILE</h3>
+                    <p>o herói da força aérea</p>
+                    <div class="container-status">
+                        <div class="status"><label>defesa</label><div class="barra"><div class="preenchimento" style="width: 90%;"></div></div></div>
+                        <div class="status"><label>sonic boom</label><div class="barra"><div class="preenchimento" style="width: 85%;"></div></div></div>
+                    </div>
+                    <span class="texto-brilhante">status: pronto para o combate</span>
+                </div>
+            </div>
+            <!-- cammy -->
+            <div class="cartao" style="--accent: #00E5FF;" data-lutador="4">
+                <img src="image/cammy_render.png" alt="cammy">
+                <div class="info-cartao">
+                    <h3>CAMMY</h3>
+                    <p>a operativa da delta red</p>
+                    <div class="container-status">
+                        <div class="status"><label>velocidade</label><div class="barra"><div class="preenchimento" style="width: 96%;"></div></div></div>
+                        <div class="status"><label>precisão</label><div class="barra"><div class="preenchimento" style="width: 88%;"></div></div></div>
+                    </div>
+                    <span class="texto-brilhante">status: pronta para o combate</span>
+                </div>
+            </div>
+            <!-- m. bison -->
+            <div class="cartao" style="--accent: #9B59B6;" data-lutador="5">
+                <img src="image/bison_render.png" alt="m. bison">
+                <div class="info-cartao">
+                    <h3>M. BISON</h3>
+                    <p>o mestre do psycho power</p>
+                    <div class="container-status">
+                        <div class="status"><label>poder</label><div class="barra"><div class="preenchimento" style="width: 99%;"></div></div></div>
+                        <div class="status"><label>dominação</label><div class="barra"><div class="preenchimento" style="width: 95%;"></div></div></div>
+                    </div>
+                    <span class="texto-brilhante">status: pronto para o combate</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. Galeria -->
+    <!-- seção mídia centralizada em imagens -->
     <section class="sessao-galeria secao-revelar" id="galeria">
-        <h2 class="titulo-secao">INSIGHTS DE COMBATE</h2>
+        <div class="cabecalho-secao">
+            <div class="linha-decorativa"></div>
+            <h2 class="titulo-secao">central de mídia</h2>
+            <div class="linha-decorativa"></div>
+        </div>
+
         <div class="grade-bento">
-            <div class="item-bento efeito-vidro grande">
-                <img src="image/gallery_1.png" alt="Combat 1">
-                <div class="sobreposicao-item"><span>CENÁRIO: NEO-TOKYO</span></div>
+            <div class="item-bento efeito-vidro grande" data-img="image/gallery_1.png" data-legenda="cenário: neo-tokyo">
+                <img src="image/gallery_1.png" alt="cenário neo-tokyo">
+                <div class="sobreposicao-item">
+                    <span>cenário: neo-tokyo</span>
+                    <button class="btn-expandir">expandir</button>
+                </div>
             </div>
-            <div class="item-bento efeito-vidro pequeno">
-                <img src="image/gallery_2.png" alt="Combat 2">
-                <div class="sobreposicao-item"><span>DETALHE: EQUIPAMENTO_v1</span></div>
+            <div class="item-bento efeito-vidro" data-img="image/gallery_2.png" data-legenda="detalhe: equipamento_v1">
+                <img src="image/gallery_2.png" alt="equipamento">
+                <div class="sobreposicao-item">
+                    <span>detalhe: equipamento_v1</span>
+                    <button class="btn-expandir">expandir</button>
+                </div>
             </div>
-            <div class="item-bento efeito-vidro pequeno">
-                <img src="image/gallery_3.png" alt="Combat 3">
-                <div class="sobreposicao-item"><span>SISTEMA: MAPA_GLOBAL</span></div>
+            <div class="item-bento efeito-vidro" data-img="image/gallery_3.png" data-legenda="sistema: mapa_global">
+                <img src="image/gallery_3.png" alt="mapa global">
+                <div class="sobreposicao-item">
+                    <span>sistema: mapa_global</span>
+                    <button class="btn-expandir">expandir</button>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. Contador Regressivo -->
-    <section class="sessao-contagem secao-revelar">
-        <div class="container-contagem efeito-vidro">
-            <h2 class="titulo-arcade">LANÇAMENTO MUNDIAL</h2>
-            <div id="contagem" class="digitos-arcade">
-                <div class="caixa-digito">
-                    <span id="dias">00</span>
-                    <label>DIAS</label>
-                </div>
-                <div class="caixa-digito">
-                    <span id="horas">00</span>
-                    <label>HORAS</label>
-                </div>
-                <div class="caixa-digito">
-                    <span id="minutos">00</span>
-                    <label>MINUTOS</label>
-                </div>
-                <div class="caixa-digito">
-                    <span id="segundos">00</span>
-                    <label>SEGUNDOS</label>
+    <!-- seção depoimentos marquee infinito -->
+    <section class="sessao-depoimentos secao-revelar" id="depoimentos">
+        <div class="cabecalho-secao">
+            <div class="linha-decorativa"></div>
+            <h2 class="titulo-secao">arena da comunidade</h2>
+            <div class="linha-decorativa"></div>
+        </div>
+        
+        <div class="container-marquee">
+            <div class="mascara-marquee"></div>
+            <!-- faixa superior: direita para esquerda -->
+            <div class="faixa-marquee esquerda">
+                <div class="grupo-marquee" id="marquee-grupo-1">
+                    <!-- gerado pelo js -->
                 </div>
             </div>
-            <p class="inserir-moeda">INSERIR MOEDA PARA COMEÇAR</p>
+            <!-- faixa inferior: esquerda para direita -->
+            <div class="faixa-marquee direita">
+                <div class="grupo-marquee" id="marquee-grupo-2">
+                    <!-- gerado pelo js -->
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- 6. Ingressos -->
+    <!-- seção ingressos simples -->
     <section class="sessao-ingressos secao-revelar" id="ingressos">
-        <div class="container-cta-ingressos">
-            <h2 class="titulo-secao">GARANTA SEU LUGAR NA ARENA</h2>
-            <p class="cta-descricao">Acesse a plataforma oficial para adquirir seu ingresso de forma segura.</p>
+        <div class="container-cta-ingressos efeito-vidro">
+            <h2 class="titulo-secao">garanta seu lugar na arena</h2>
+            <p class="cta-descricao">acompanhe o lançamento mundial e garanta sua entrada nas melhores salas.</p>
             <button class="botao-primario botao-comprar-agora"
                 onclick="window.open('https://www.ingresso.com/filme/street-fighter')">
-                COMPRAR INGRESSO OFICIAL
+                comprar ingresso oficial
             </button>
             <div class="etiqueta-segura">
-                <img src="https://img.icons8.com/ios-filled/50/ffffff/shield.png"
-                    style="width: 15px; vertical-align: middle; margin-right: 5px;" alt="Seguro">
-                PLATAFORMA CRIPTOGRAFADA E SEGURA
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                plataforma criptografada e segura
             </div>
         </div>
     </section>
 
-    <!-- 7. Seção de Comentários -->
-    <section class="sessao-comentarios secao-revelar" id="comunidade">
-        <h2 class="titulo-secao">COMUNICAÇÕES DE CAMPO</h2>
-        <div class="container-comentarios efeito-vidro">
-            <div class="lista-comentarios">
-                <div class="comentario">
-                    <div class="cabecalho-comentario">
-                        <span class="usuario">GUYLE_FAN_99</span>
-                        <span class="tempo">HÁ 2 MINUTOS</span>
-                    </div>
-                    <p class="texto-comentario">O visual desse filme está surreal! Finalmente uma adaptação que parece respeitar o material original. Hadouken!</p>
-                </div>
-                <div class="comentario">
-                    <div class="cabecalho-comentario">
-                        <span class="usuario">CHUN_LI_CORE</span>
-                        <span class="tempo">HÁ 15 MINUTOS</span>
-                    </div>
-                    <p class="texto-comentario">Espero que a trilha sonora seja tão épica quanto esses renders. 2026 não chega nunca!</p>
-                </div>
-                <div class="comentario-input">
-                    <input type="text" placeholder="ENVIAR TRANSMISSÃO..." class="campo-comentario">
-                    <button class="botao-enviar">ENVIAR</button>
-                </div>
+    <!-- redes sociais com links reais e svg -->
+    <section class="sessao-social secao-revelar">
+        <div class="container-social efeito-vidro">
+            <h3>siga o movimento</h3>
+            <div class="grade-social">
+                <a href="https://x.com/StreetFighter" target="_blank" class="link-social x-social">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    <span>twitter / x</span>
+                </a>
+                <a href="https://www.instagram.com/streetfighter/" target="_blank" class="link-social insta-social">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.246 2.242 1.308 3.607.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.332 2.633-1.308 3.608-.975.975-2.242 1.246-3.607 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.332-3.608-1.308-.975-.975-1.246-2.242-1.308-3.607-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.332-2.633 1.308-3.608.975-.975 2.242-1.246 3.607-1.308 1.266-.058 1.646-.07 4.85-.07M12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.058-1.28.073-1.689.073-4.948 0-3.259-.014-3.668-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    <span>instagram</span>
+                </a>
+                <a href="https://www.youtube.com/@StreetFighter" target="_blank" class="link-social youtube-social">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    <span>youtube</span>
+                </a>
+                <a href="https://discord.com/invite/streetfighter" target="_blank" class="link-social discord-social">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.68 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+                    <span>discord</span>
+                </a>
             </div>
+            <p class="hashtag">#streetfighter2026 #worldwarrior</p>
         </div>
     </section>
 
+    <!-- rodapé -->
     <footer class="rodape secao-revelar">
         <div class="linha-rodape"></div>
         <div class="creditos">
-            <p>DIRETOR: KITAO SAKURAI | PRODUÇÃO: CAPCOM FILMS | ELENCO: [ANDREW KOJI, NOAH CENTINEO, JASON MOMOA]</p>
-            <p>TECNOLOGIA DE HUD: SF_INTERFACE_CORE_v5.0</p>
+            <p>diretor: kitao sakurai | produção: capcom films | elenco: andrew koji, noah centineo, jason momoa</p>
+            <p>tecnologia de hud: sf_interface_core_v5.0</p>
         </div>
-        <p class="direitos">&copy; 2026 CAPCOM & SF FILMS. TODOS OS DIREITOS RESERVADOS.</p>
+        <p class="direitos">&copy; 2026 capcom & sf films. todos os direitos reservados.</p>
     </footer>
+
 
     <script src="script.js"></script>
 </body>

@@ -1,18 +1,16 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Lógica do cursor HUD tático
+    // cursor hud personalizado
     const cursor = document.querySelector('.cursor-tatico');
-    
     document.addEventListener('mousemove', (e) => {
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
     });
-
     document.addEventListener('mousedown', () => cursor.classList.add('clique'));
     document.addEventListener('mouseup', () => cursor.classList.remove('clique'));
 
-    // 2. Parallax dinâmico no Frame de Mira (Hero)
+    // efeito parallax no frame de mira do hero
     const frameMira = document.querySelector('.frame-mira');
     document.addEventListener('mousemove', (e) => {
         if (frameMira) {
@@ -22,150 +20,154 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 3. Lógica do cabeçalho (Scroll Tracking & ScrollSpy)
+    // controle do cabecalho no scroll
     const cabecalho = document.querySelector('.cabecalho-principal');
-    const linksNav = document.querySelectorAll('.links-navegacao li a');
-    const secoes = document.querySelectorAll('section, header.sessao-principal');
-
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            cabecalho.classList.add('rolado');
-        } else {
-            cabecalho.classList.remove('rolado');
-        }
-
-        let atual = "";
-        secoes.forEach(secao => {
-            const secaoTopo = secao.offsetTop;
-            if (window.scrollY >= (secaoTopo - 150)) {
-                atual = secao.getAttribute('id');
-            }
-        });
-
-        linksNav.forEach(a => {
-            a.classList.remove('ativa');
-            if (a.getAttribute('href').includes(atual)) {
-                a.classList.add('ativa');
-            }
-        });
+        cabecalho.classList.toggle('rolado', window.scrollY > 50);
     });
 
-    // 4. Animação de Revelação por Scroll (Intersection Observer)
-    const secoesParaRevelar = document.querySelectorAll('.secao-revelar');
-    const observadorRevelacao = new IntersectionObserver((entradas) => {
-        entradas.forEach(entrada => {
-            if (entrada.isIntersecting) {
-                entrada.target.classList.add('revelada');
-            }
+    // animação de revelação de seções
+    const observerOptions = { threshold: 0.1 };
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('revelada');
         });
-    }, { threshold: 0.15 });
+    }, observerOptions);
+    document.querySelectorAll('.secao-revelar').forEach(el => revealObserver.observe(el));
 
-    secoesParaRevelar.forEach(secao => observadorRevelacao.observe(secao));
-
-    // 5. Lógica de cartões expansíveis e reset de status
+    // lógica dos cards expansíveis de lutadores
     const cartoes = document.querySelectorAll('.cartao');
-
-    const animarBarras = (container) => {
-        const preenchimentos = container.querySelectorAll('.preenchimento');
-        preenchimentos.forEach(preenchimento => {
-            const largura = preenchimento.style.width;
-            preenchimento.style.width = '0';
-            setTimeout(() => preenchimento.style.width = largura, 100);
-        });
-    };
-
+    
     cartoes.forEach(cartao => {
         cartao.addEventListener('click', () => {
             if (!cartao.classList.contains('ativa')) {
                 cartoes.forEach(c => c.classList.remove('ativa'));
                 cartao.classList.add('ativa');
-                animarBarras(cartao);
+                
+                // reinicia animação das barras de status
+                const barras = cartao.querySelectorAll('.preenchimento');
+                barras.forEach(b => {
+                    const w = b.style.width;
+                    b.style.width = '0';
+                    setTimeout(() => b.style.width = w, 100);
+                });
             }
         });
     });
 
-    // 6. Contagem Regressiva (Contador Arcade) 
-    const dataAlvo = new Date("Jan 1, 2026 00:00:00").getTime();
+    // gerador de depoimentos para o carrossel infinito
+    const depoimentos = [
+        { n: 'ryu_fan_99', b: 'mestre', t: 'hadouken no cinema finalmente! visual impecável.', c: '#00a2ff' },
+        { n: 'ken_master', b: 'veterano', t: 'o shoryuken de fogo parece surreal. ansioso!', c: '#ff4500' },
+        { n: 'chun_interpol', b: 'lenda', t: 'a melhor representação da chun-li que já vi.', c: '#ffd700' },
+        { n: 'guile_sonic', b: 'elite', t: 'sonic boom em imax vai ser uma loucura total.', c: '#00ff88' },
+        { n: 'cammy_delta', b: 'agente', t: 'as cenas de ação estão em outro nível de coreografia.', c: '#00e5ff' },
+        { n: 'bison_lord', b: 'vilão', t: 'shadaloo vai dominar as bilheterias em 2026.', c: '#9b59b6' },
+        { n: 'arcade_og', b: 'campeão', t: 'joguei muito o sf2 nos fliperamas, isso é um sonho.', c: '#ff0000' },
+        { n: 'world_warrior', b: 'fã', t: 'finalmente uma adaptação que respeita o material original.', c: '#00a2ff' }
+    ];
 
-    const atualizarContagem = () => {
-        const agora = new Date().getTime();
-        const diferenca = dataAlvo - agora;
-
-        const d = Math.floor(diferenca / (1000 * 60 * 60 * 24));
-        const h = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((diferenca % (1000 * 60)) / 1000);
-
-        if (document.getElementById('dias')) {
-            document.getElementById('dias').innerText = d.toString().padStart(2, '0');
-            document.getElementById('horas').innerText = h.toString().padStart(2, '0');
-            document.getElementById('minutos').innerText = m.toString().padStart(2, '0');
-            document.getElementById('segundos').innerText = s.toString().padStart(2, '0');
-        }
-
-        if (diferenca < 0) {
-            clearInterval(temporizador);
-            const elementoContagem = document.getElementById('contagem');
-            if (elementoContagem) elementoContagem.innerHTML = "BATALHA INICIADA!";
-        }
-    };
-
-    const temporizador = setInterval(atualizarContagem, 1000);
-    atualizarContagem();
-
-    // 7. Efeito Typewriter para Sinopse
-    const elementoTypewriter = document.querySelector('.texto-maquina-escrever');
-    if (elementoTypewriter) {
-        const texto = elementoTypewriter.getAttribute('data-text');
-        let index = 0;
-        let jaIniciado = false;
-        elementoTypewriter.innerHTML = "";
-
-        const digitar = () => {
-            if (index < texto.length) {
-                elementoTypewriter.innerHTML += texto.charAt(index);
-                index++;
-                setTimeout(digitar, 30);
-            } else {
-                elementoTypewriter.style.borderRight = "none";
-            }
-        };
-
-        const observadorTexto = new IntersectionObserver((entradas) => {
-            if (entradas[0].isIntersecting && !jaIniciado) {
-                jaIniciado = true;
-                digitar();
-            }
-        }, { threshold: 0.5 });
-
-        observadorTexto.observe(elementoTypewriter);
+    function criarCard(dep) {
+        return `
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:${dep.c}22; color:${dep.c}">${dep.n[0].toUpperCase()}</div>
+                    <div class="info-user">
+                        <span class="nome">${dep.n}</span>
+                        <span class="badge">${dep.b}</span>
+                    </div>
+                </div>
+                <p class="texto-card">"${dep.t}"</p>
+            </div>
+        `;
     }
 
-    // 8. Lógica de simulação de envio de comentário
-    const botaoEnviar = document.querySelector('.botao-enviar');
-    const campoComentario = document.querySelector('.campo-comentario');
-    const listaComentarios = document.querySelector('.lista-comentarios');
+    const m1 = document.getElementById('marquee-grupo-1');
+    const m2 = document.getElementById('marquee-grupo-2');
+    
+    if (m1 && m2) {
+        const htmlCards = depoimentos.map(d => criarCard(d)).join('');
+        const htmlCardsDuplicados = htmlCards + htmlCards; // para loop seamless
+        m1.innerHTML = htmlCardsDuplicados;
+        m2.innerHTML = htmlCardsDuplicados;
+    }
 
-    if (botaoEnviar) {
-        botaoEnviar.addEventListener('click', () => {
-            if (campoComentario.value.trim() !== "") {
-                const novoComentario = document.createElement('div');
-                novoComentario.classList.add('comentario');
-                novoComentario.innerHTML = `
-                    <div class="cabecalho-comentario">
-                        <span class="usuario">RECRUTA_SF</span>
-                        <span class="tempo">AGORA MESMO</span>
-                    </div>
-                    <p class="texto-comentario">${campoComentario.value}</p>
-                `;
-                listaComentarios.insertBefore(novoComentario, document.querySelector('.comentario-input'));
-                campoComentario.value = "";
-                // Feedback visual tático ao invés de alert
-                botaoEnviar.innerText = "ENVIADO!";
-                setTimeout(() => botaoEnviar.innerText = "ENVIAR", 2000);
+    // contagem regressiva arcade
+    const dataAlvo = new Date('July 15, 2026 00:00:00').getTime();
+    setInterval(() => {
+        const agora = Date.now();
+        const diff = dataAlvo - agora;
+        if (diff < 0) return;
+        
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        
+        const ids = ['dias', 'horas', 'minutos', 'segundos'];
+        const valores = [d, h, m, s];
+        
+        ids.forEach((id, i) => {
+            const el = document.getElementById(id);
+            if (el) el.innerText = String(valores[i]).padStart(2, '0');
+        });
+    }, 1000);
+
+    // animação dos números das estatísticas
+    const stats = document.querySelectorAll('.stat-numero');
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const alvo = +entry.target.dataset.alvo;
+                let atual = 0;
+                const timer = setInterval(() => {
+                    atual += Math.ceil(alvo / 50);
+                    if (atual >= alvo) {
+                        entry.target.innerText = alvo;
+                        clearInterval(timer);
+                    } else {
+                        entry.target.innerText = atual;
+                    }
+                }, 30);
+                statsObserver.unobserve(entry.target);
             }
         });
+    }, { threshold: 0.5 });
+    stats.forEach(s => statsObserver.observe(s));
+
+    // partículas de fundo
+    const particulasCont = document.getElementById('particulas-container');
+    if (particulasCont) {
+        for (let i = 0; i < 30; i++) {
+            const p = document.createElement('div');
+            p.className = 'particula';
+            const size = Math.random() * 3 + 1;
+            p.style.cssText = `
+                position: fixed;
+                width: ${size}px;
+                height: ${size}px;
+                background: ${Math.random() > 0.5 ? 'var(--ryu)' : 'var(--ken)'};
+                border-radius: 50%;
+                top: ${Math.random() * 100}vh;
+                left: ${Math.random() * 100}vw;
+                opacity: ${Math.random() * 0.3};
+                pointer-events: none;
+                z-index: -1;
+                animation: flutuar ${Math.random() * 10 + 5}s linear infinite;
+            `;
+            particulasCont.appendChild(p);
+        }
+        
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes flutuar {
+                0% { transform: translateY(0) translateX(0); }
+                50% { transform: translateY(-20px) translateX(10px); }
+                100% { transform: translateY(0) translateX(0); }
+            }
+        `;
+        document.head.appendChild(style);
     }
 
-    console.log("SISTEMA: Interface SF2026 Otimizada e Operacional.");
+    console.log('sistema operacional: street fighter 2026 pronto.');
 });
